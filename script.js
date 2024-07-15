@@ -40,20 +40,18 @@ function playRound(humanChoice,computerChoice){
 
 }
 
-function playGame(){
+function playGame(humanSelection){
     let humanScore = 0;
     let computerScore = 0;
-    for(let i = 0; i < 5;i++){
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
+    //const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
         let x = playRound(humanSelection,computerSelection);
-        if (x=="L"){
-            computerScore++;
-        }
-        if(x=="W"){
-            humanScore++;
-        }
+    if (x=="L"){
+        computerScore++;
     }
+    if(x=="W"){
+        humanScore++;
+        }
     if(humanScore==computerScore){
         return "Draw"
     }
@@ -64,6 +62,24 @@ function playGame(){
         return "You lose!"
     }
 }
+const rockBtn = document.querySelector("#rock");
+const paperBtn = document.querySelector("#paper");
+const scissorBtn = document.querySelector("#scissor");
 
 
-console.log(playGame());
+rockBtn.addEventListener("click",()=>{
+    humanSelection = "R";
+    console.log(playGame(humanSelection));
+});
+paperBtn.addEventListener("click",()=>{
+    humanSelection = "P";
+    console.log(playGame(humanSelection));
+});
+scissorBtn.addEventListener("click",()=>{
+    humanSelection = "S";
+    console.log(playGame(humanSelection));
+});
+
+const displayScore = document.createElement("div");
+
+//console.log(playGame(humanSelection));
